@@ -3,6 +3,7 @@ package web.model;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,15 +12,14 @@ import java.util.Set;
 public class Role {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "role_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "role")
     private String role;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User users;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users = new HashSet<>();
 
     public Role() {
     }
@@ -40,11 +40,11 @@ public class Role {
         this.role = role;
     }
 
-    public User getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(User users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 }
