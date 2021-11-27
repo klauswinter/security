@@ -13,16 +13,12 @@
         <tr>
             <th>ID</th>
             <th>Username</th>
-            <th>Email</th>
-            <th>Password</th>
             <th>Action</th>
         </tr>
 
         <tr th:each="user : ${users}">
             <td th:text="${user.getId()}">...</td>
             <td th:text="${user.getUsername()}">...</td>
-            <td th:text="${user.getEmail()}">...</td>
-            <td th:text="${user.getPassword()}">...</td>
             <td>
                 <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
                     <label>
@@ -33,6 +29,12 @@
                 <form th:method="GET" th:action="@{/admin/edit/{id}(id=${user.getId()})}">
                     <label>
                         <input th:type="submit" th:value="Edit">
+                    </label>
+                </form>
+
+                <form th:method="GET" th:action="@{/admin/user_info/{id}(id=${user.getId()})}">
+                    <label>
+                        <input th:type="submit" th:value="Info">
                     </label>
                 </form>
             </td>
