@@ -8,31 +8,29 @@
 
 <div align="center">
     <h2>Users Manager</h2>
-    <h3><a href="users/new">New User</a></h3>
+    <h3><a href="admin/new">New User</a></h3>
     <table border="2" cellpadding="10">
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Job</th>
-            <th>Age</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
             <th>Action</th>
         </tr>
 
         <tr th:each="user : ${users}">
             <td th:text="${user.getId()}">...</td>
-            <td th:text="${user.getName()}">...</td>
-            <td th:text="${user.getSurname()}">...</td>
-            <td th:text="${user.getJob()}">...</td>
-            <td th:text="${user.getAge()}">...</td>
+            <td th:text="${user.getUsername()}">...</td>
+            <td th:text="${user.getEmail()}">...</td>
+            <td th:text="${user.getPassword()}">...</td>
             <td>
-                <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
+                <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
                     <label>
                         <input th:type="submit" th:value="Delete">
                     </label>
                 </form>
 
-                <form th:method="GET" th:action="@{/users/edit/{id}(id=${user.getId()})}">
+                <form th:method="GET" th:action="@{/admin/edit/{id}(id=${user.getId()})}">
                     <label>
                         <input th:type="submit" th:value="Edit">
                     </label>
@@ -41,7 +39,6 @@
         </tr>
     </table>
 </div>
-
 
 </body>
 </html>
