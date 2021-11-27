@@ -21,7 +21,7 @@ public class AdminsController {
     @GetMapping()
     public String allUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "admin/index";
+        return "all_users";
     }
 
     @GetMapping("/user_info/{id}")
@@ -45,7 +45,7 @@ public class AdminsController {
     @GetMapping("/edit/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
-        return "admin/edit";
+        return "edit_user";
     }
 
     @PatchMapping("/edit/{id}")
