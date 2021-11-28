@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import web.model.User;
 import web.service.UserServiceImpl;
 
@@ -21,11 +22,11 @@ public class AdminsController {
     @GetMapping()
     public String allUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "all_users";
+        return "admin/all_users";
     }
 
     @GetMapping("/user_info/{id}")
-    public String showUser(@PathVariable("id") Long id, Model model) {
+    public String showUserInfo(@PathVariable("id") Long id, Model model) {
         model.addAttribute("show_users", userService.getUserById(id));
         return "admin/user_info";
     }
@@ -42,10 +43,10 @@ public class AdminsController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("edit/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
-        return "edit_user";
+        return "admin/edit_user";
     }
 
     @PatchMapping("/edit/{id}")

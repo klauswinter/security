@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(long id, User updatedUser) {
+    public void updateUser(Long id, User updatedUser) {
         User userToBeUpdated = getUserById(id);
 
         userToBeUpdated.setUsername(updatedUser.getUsername());
@@ -29,12 +29,18 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserById(long id) {
+    public User getUserById(Long id) {
         return em.find(User.class, id);
     }
 
     @Override
-    public void removeUserById(long id) {
+    public User getUserByUsername(String username) {
+        return em.createQuery("from User where userName=:username", User.class)
+                .setParameter("username", username).getSingleResult();
+    }
+
+    @Override
+    public void removeUserById(Long id) {
         em.remove(getUserById(id));
     }
 
