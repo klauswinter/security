@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Component
 @Table(name = "users")
 public class User implements UserDetails {
 

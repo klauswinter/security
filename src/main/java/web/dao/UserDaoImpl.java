@@ -1,14 +1,12 @@
 package web.dao;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import web.model.User;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Service
-@Component
+@Repository
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
